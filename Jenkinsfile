@@ -3,9 +3,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'hello'
+                sh "./runScript.sh"
             }
         }
     }
 }
+
 
