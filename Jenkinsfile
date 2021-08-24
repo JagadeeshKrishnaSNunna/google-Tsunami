@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "./runScript.sh 13.67.62.82"
+                sh "bash runScript.sh 13.67.62.82"
             }
         }
     }
