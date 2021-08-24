@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "bash runScript.sh 127.0.0.1"
+                sh "bash runScript.sh 192.168.56.125"
             }
         }
     }
