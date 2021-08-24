@@ -8,10 +8,16 @@
 
 # Usage
 step 1: clone the repository
+
         https://github.com/JagadeeshKrishnaSNunna/google-Tsunami.git
         
+        
 step 2: run the runscript.sh
+
         bash runScript.sh <ip of target>
-step 3: output will be in same directory in a tsunami-output.json file
+  
+step 3: output
+
+        output will be in same directory in a tsunami-output.json file
   
   
