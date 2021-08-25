@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    parameters{
+        string(name:IP,defaultValue:'')
+    }
     stages {
         stage('Build') {
             steps {
-                sh "bash runScript.sh 192.168.56.125"
+                sh "bash runScript.sh params.IP"
             }
         }
         stage('test') {
