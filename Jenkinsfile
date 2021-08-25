@@ -8,7 +8,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'grep "vulnerability" tsunami-output.json'
+                sh '! grep "vulnerability" tsunami-output.json'
             }
         }
     }
