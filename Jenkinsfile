@@ -11,6 +11,11 @@ pipeline {
                 sh '! grep "vulnerability" tsunami-output.json'
             }
         }
+        stage('Final') {
+            steps {
+                echo 'Buld successful...!'
+            }
+        }
     }
 }
 
