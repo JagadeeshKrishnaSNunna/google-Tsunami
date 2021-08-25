@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "bash runScript.sh params.IP"
+                sh "bash runScript.sh ${IP}"
             }
         }
         stage('test') {
