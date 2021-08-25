@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters{
-        string(name:IP,defaultValue:'')
+        string(name:'IP',defaultValue:'')
     }
     stages {
         stage('Build') {
