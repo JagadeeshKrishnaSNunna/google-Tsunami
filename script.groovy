@@ -22,6 +22,10 @@ void jsonparser(){
 
 void issue(summ,desc){
     def res=jiraJqlSearch failOnError: false, jql: "project=\'TEST\' AND summary~'${summ}' AND description ~ '${desc}' ", site: 'jiraconn'
+    print '-------------------------------------------------------------------------------'
+    print res
+    print '---------------------------------------------'
+    print res.data.issues.size()
     if(res.data.issues.size()>0){
         create_newjira_issue(summ,desc)
     }
