@@ -14,7 +14,7 @@ void create_newjira_issue(summ,desc) {
   }
 }
 void jsonparser(){
-    def projects = readJSON file: "${env.WORKSPACE}//Tsunami-output.json"
+    def projects = readJSON file: "${env.WORKSPACE}//tsunami-output.json"
     def summ=projects.scanFindings[0].vulnerability.title
     def desc=projects.scanFindings[0].vulnerability.description
     issue(summ,desc)
