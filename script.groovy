@@ -26,7 +26,7 @@ void issue(summ,desc){
     print res
     print '---------------------------------------------'
     print res.data.issues.size()
-    if(res.data.issues.size()>0){
+    if(res.data.issues.size()==0){
         create_newjira_issue(summ,desc)
     }
 }
