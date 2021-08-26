@@ -23,7 +23,10 @@ pipeline {
     }
     post{
         failure{
-            jsonparser()
+            script{
+                def sc=load "script.groovy"
+                sc.jsonparser()
+            }
         }
     
     }
