@@ -38,7 +38,7 @@ void jsonparser(){
 }
 
 void issue(summ,desc){
-    def res=jiraJqlSearch failOnError: false, jql: "project=\'TEST\' AND summary~'${summ}' AND description ~ '${desc}' ", site: 'jiraconn'
+    def res=jiraJqlSearch failOnError: false, jql: 'project="TEST" AND summary~"${summ}" AND description ~ "${desc}" ', site: 'jiraconn'
     print '-------------------------------------------------------------------------------'
     print res
     print '---------------------------------------------'
