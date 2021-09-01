@@ -14,10 +14,27 @@ void create_newjira_issue(summ,desc) {
   }
 }
 void jsonparser(){
+//     def projects = readJSON file: "${env.WORKSPACE}//tsunami-output.json"
+//     def summ=projects.scanFindings[0].vulnerability.title
+//     def desc=projects.scanFindings[0].vulnerability.description
     def projects = readJSON file: "${env.WORKSPACE}//tsunami-output.json"
-    def summ=projects.scanFindings[0].vulnerability.title
-    def desc=projects.scanFindings[0].vulnerability.description
-    issue(summ,desc)
+    def map=[:]
+    def temp=[:]
+    for(v in projects.scanFindings){
+        temp['title']=v.vulnerability.title
+        temp[v.vulnerability.description]=v.vulnerability.description
+        map[v.vulnerability.mainId.value]=temp
+        temp=[:]
+    }
+    map.each{entry -> 
+    def summ=entry.key
+    def nmap=entry.value
+    def des=''
+    nmap.each{ent ->
+    des=des+ent.value+"\n"
+    }
+        issue(summ,des)
+    }
 }
 
 void issue(summ,desc){
