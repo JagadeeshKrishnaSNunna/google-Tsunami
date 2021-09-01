@@ -21,14 +21,14 @@ void jsonparser(){
     def map=[:]
     def temp=[:]
     for(v in projects.scanFindings){
-        temp['title']=v.vulnerability.title
-        temp[v.vulnerability.description]=v.vulnerability.description
-        map[v.vulnerability.mainId.value]=temp
+        temp['title']=v.vulnerability.title.replaceAll("'","")
+        temp[v.vulnerability.description]=v.vulnerability.description.replaceAll("'","")
+        map[v.vulnerability.mainId.value.replaceAll("'","")]=temp
         temp=[:]
     }
     map.each{entry -> 
-    def summ=entry.key
-    def nmap=entry.value
+    def summ=entry
+    def nmap=entry
     def des=''
     nmap.each{ent ->
     des=des+ent.value+"\n"
@@ -38,7 +38,7 @@ void jsonparser(){
 }
 
 void issue(summ,desc){
-    def res=jiraJqlSearch failOnError: false, jql: 'project="TEST" AND summary~"${summ}" AND description ~ "${desc}" ', site: 'jiraconn'
+    def res=jiraJqlSearch failOnError: false, jql: "project=\'TEST\' AND summary~\'${summ}\' AND description ~ \'${desc}\' ", site: 'jiraconn'
     print '-------------------------------------------------------------------------------'
     print res
     print '---------------------------------------------'
