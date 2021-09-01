@@ -4,11 +4,11 @@ pipeline {
         string(name:'IP',defaultValue:'')
     }
     stages {
-        stage('Build') {
-            steps {
-                sh "bash runScript.sh ${IP}"
-            }
-        }
+//         stage('Build') {
+//             steps {
+//                 sh "bash runScript.sh ${IP}"
+//             }
+//         }
         stage('test') {
             steps {
                 sh '! grep "vulnerability" tsunami-output.json'
