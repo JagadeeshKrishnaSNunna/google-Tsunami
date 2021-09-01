@@ -37,7 +37,7 @@ void jsonparser(){
     print "------------------------------"
     print "desc :${des}"
     print "------------------------------"
-
+    issue(summ,des)
     }
 }
 
