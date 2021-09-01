@@ -33,10 +33,6 @@ void jsonparser(){
     nmap.each{ent ->
     des=des+ent.value+"\n"
     }
-    print "summ : ${summ}"
-    print "------------------------------"
-    print "desc :${des}"
-    print "------------------------------"
     issue(summ,des)
     }
 }
