@@ -14,9 +14,6 @@ void create_newjira_issue(summ,desc) {
   }
 }
 void jsonparser(){
-//     def projects = readJSON file: "${env.WORKSPACE}//tsunami-output.json"
-//     def summ=projects.scanFindings[0].vulnerability.title
-//     def desc=projects.scanFindings[0].vulnerability.description
     def projects = readJSON file: "${env.WORKSPACE}//tsunami-output.json"
     def map=[:]
     def temp=[:]
@@ -26,20 +23,24 @@ void jsonparser(){
         map[v.vulnerability.mainId.value.replaceAll("'","")]=temp
         temp=[:]
     }
+    // print "-----------------\n"+map
+    
     map.each{entry -> 
-    def summ=entry
-    def nmap=entry
+    def summ=entry.key
+    def nmap=entry.value
+    
     def des=''
     nmap.each{ent ->
     des=des+ent.value+"\n"
     }
-        print "------------------------------"
-        print summ
-        print "------------------------------"
-        print desc
-        //issue(summ,des)
+    print "summ : ${summ}"
+    print "------------------------------"
+    print "desc :${des}"
+    print "------------------------------"
+
     }
 }
+
 
 void issue(summ,desc){
     def res=jiraJqlSearch failOnError: false, jql: "project=\'TEST\' AND summary~\'${summ}\' AND description ~ \'${desc}\' ", site: 'jiraconn'
